@@ -1,0 +1,12 @@
+<table id="resultados" class="tabla">
+  <tr>
+    <th>Entidad</th>
+    <th>Direccion</th>
+    <th>Detalles</th>
+  </tr>
+<tr  *ngFor="let item of parties">
+  <td>{{item.name}}</td>
+  <td>{{getAddress(item.address)}}</td>
+  <td><button [routerLink]="'/details/'+item.ocid" >Ver detalles</button></td>
+</tr>
+</table>
