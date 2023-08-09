@@ -15,13 +15,10 @@ export class ReleaseDetailsInfoComponent {
   @Input()
   ocid?:string;
   isLoading:boolean=true;
-  release?:Release
   releaseData?:ReleaseInfo[]
-  releaseContracts?:Contract[]
+  releaseContracts?:Contract[]=[]
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
    this.getRelease();
 
   }
@@ -29,10 +26,16 @@ export class ReleaseDetailsInfoComponent {
 
   getRelease(){
     this.releaseService.getReleaseById(this.ocid!).subscribe(response => {
-      this.release = response;
-      this.releaseData = this.release.releases
-      this.releaseContracts = this.releaseData![0].contracts
-      // console.log(this.releaseData!)
+      this.releaseData = response.releases;
+      var i=0
+      this.releaseData?.forEach(item=>{
+        item.contracts?.forEach(element => {
+          this.releaseContracts!.push(element)
+        });
+
+        i++
+      })
+      console.log(response)
       this.isLoading=false;
       });
   }

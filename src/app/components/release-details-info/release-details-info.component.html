@@ -1,30 +1,22 @@
-<h4>Informacion general de la resolucion de compra</h4>
+<Div *ngFor="let release of releaseData">
+  <h4>Informacion general de la resolucion de compra numero {{release.id}}</h4>
 <h4 *ngIf="isLoading">
   CARGANDO ...
 </h4>
-<table id="resultados" class="tabla" *ngIf="!isLoading">
-<tr>
-  <td>Remitente</td>
-  <td>{{release!.publisher!.name}}</td>
-</tr>
-<tr>
-  <td>Fecha de publicacion</td>
-  <td>{{release!.publishedDate}}</td>
-</tr>
-<tr>
-  <td>Version</td>
-  <td>{{release!.version}}</td>
-</tr>
-</table>
-
-
-
-
-<h3>Resolucion de compra</h3>
-<h4>Contratos</h4>
-<table id="table2" class="tabla" ngIf="!isLoading" *ngFor="let item of releaseData">
-<tr>
-  <td>Remitente</td>
-  <td>{{item.contracts}}</td>
-</tr>
-</table>
+<Div *ngIf="!isLoading">
+  <table id="resultados" class="tabla" *ngFor="let item of releaseData">
+    <tr>
+      <td>ocid</td>
+      <td>{{item.ocid}}</td>
+    </tr>
+    <tr>
+      <td>ID</td>
+      <td>{{item.id}}</td>
+    </tr>
+    <tr>
+      <td>Fecha</td>
+      <td>{{item.date}}</td>
+    </tr>
+  </table>
+</Div>
+</Div>
